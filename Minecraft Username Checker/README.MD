@@ -30,3 +30,12 @@ Sometimes the below might appears (It waits for a few seconds):
 ![When being rate limited](https://gyazo.com/289928ca0d7bdd25921c7ba733079d38.png)
 
 This happens when we hit the rate limit of 200 requests per minute.
+<br>
+## Dependencies
+
+To install required dependencies just run the command below (Using `pip`):
+
+```bash
+pip install -r requirements.txt
+```
+    

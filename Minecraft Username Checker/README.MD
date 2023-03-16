@@ -24,8 +24,9 @@ The second shown below takes an extra argument `-l` or `--length`, followed by a
 ```
 
 ![with length](https://gyazo.com/e3e1d5adfcb0e56ca036429dd4aac761.gif)
-<br><br>
+<br>
 Sometimes the below might appears (It waits for a few seconds):
+<br>
 ![When being rate limited](https://gyazo.com/289928ca0d7bdd25921c7ba733079d38.png)
 
 This happens when we hit the rate limit of 200 requests per minute.

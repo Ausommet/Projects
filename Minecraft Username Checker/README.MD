@@ -31,7 +31,7 @@ Lastly the final one shown below takes an extra argument of  `-u` or `-U`, follo
 Sometimes the below might appears (It waits for a few seconds):
 
 ```diff
-@@ text in purple (Being Rate Limited)@@
+@@ Being Rate Limited . . .@@
 ```
 <br>
 This happens when we hit the rate limit of 200 requests per minute.

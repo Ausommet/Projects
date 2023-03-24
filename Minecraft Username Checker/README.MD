@@ -2,7 +2,8 @@
 # A Simple Minecraft Username Checker
 
 A simple minecraft username checker which checks the username using mojang's API.
-Can also be used to randomly check for usernames.
+<br>
+Can also be used to randomly check for usernames with a given length.
 
 
 ## How To Use

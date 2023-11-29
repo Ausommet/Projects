@@ -86,7 +86,7 @@ To run the project your terminal/CLI must be opened inside the same folder as th
 #  Setting Up Database
 
   
-To setup the database, it can be done by changing the following below:
+To setup the database inside database.py, it can be done by changing the following below:
 
   
 
@@ -127,20 +127,6 @@ To setup the database, it can be done by changing the following below:
   
 
 This is all that is required to implement their own Database, since almost everything is controlled through the database_query.py and a call is used inside app.py for the downloading of the raw_data.json.
-
-  
-
-Inside database.py update it to your own database along side the required Keys to access the Database, as shown below:
-
-Change the following below to your own database/server.
-
-    HOST=HOSTNAME
-    
-    USERNAME=USERNAME
-    
-    PASSWORD=PASSWORD
-    
-    DATABASE=DATABASENAME
 
 #  Setting up Reddit API
  Inside API.py, all that is needed is to add your own client_id, client_secret, user_agent, username and password

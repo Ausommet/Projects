@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='static\css\results.css'>
+    <title>Link Hunter: Error Occured</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/redditLogo.png') }}">
+    <style>
+		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+	</style>
+  </head>
+  <body class="dark-theme">
+    {% if eidx == 0 %}
+    <h1>Invalid Link</h1>
+  {% elif eidx == 1 %}
+    <h1>No Results Found for the given link</h1>
+  {% elif eidx == 2 %}
+    <h1>Unable To download the raw data. Try Again!</h1>
+  {% elif eidx == 3 %}
+    <h1>Invalid link format. </h1>
+  {% else %}
+    <h1>How did you even get here?</h1>
+    <p>You should probably enter a link next time?</p>
+  {% endif %}
+  <p>{{ link }}</p>
+  
+      <button onclick=window.location.href="{{ url_for('index') }}" class="goback">Go back</button>
+
+
+      <div class="colour_container">
+        <img src="{{ url_for('static', filename='img/night-mode.png') }}" id="colour_icon">
+      </div>
+    </body>
+      <script>
+        document.getElementById("colour_icon").onclick = function(){
+          document.body.classList.toggle("dark-theme");
+        }
+      </script>
+</body>
+</html>

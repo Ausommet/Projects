@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <title>Link Hunter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <meta charset="utf-8" >
+    <link rel="icon" href="{{ url_for('static', filename='img/redditLogo.png') }}">
+    </head>
+
+
+    <div class="history-button">
+      <button onclick="showTable()" class="history" id="history">
+        <img src="{{ url_for('static', filename='img/history.png') }}" id="historyImage">
+        <table id="table" style="display: none;">
+          <thead>
+            <tr>
+              <th>Past Searches</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for link in recent %}
+            <tr>
+              <td><a href="{{ url_for('results', q=link[0])}}">{{ link[0] }}</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </button>
+    </div>
+    
+    <div class="dropdown">
+        <img src="{{ url_for('static', filename='img/help.png') }}" width="4em" id="help">
+        <div class="dropdown-help">
+            <img src="{{ url_for('static', filename='img/help.png') }}">
+            <div class="help-content">Please enter a link to analyse how <br> assossiated posts on Reddit <br> have performed</div>
+        </div>
+    </div>
+
+    <div class="colour-mode">
+        <img src="{{ url_for('static', filename='img/night-mode.png') }}" id="icon">
+    </div>
+
+    <h1 class="Title">
+        Link Hunter
+    </h1>
+
+
+    <div class="Search-Bar">
+        <form action="/results" method="post">
+           <input type="text" name="q" placeholder="Search" class="search-enter"> 
+            <button type="submit" value="submit" class="Go">Go</button>
+        </form>
+    </div>
+
+    <p class="disclaimer">Disclaimer : This tool should not be used to target or harass certain groups or individuals</p>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"> </script>    <!-- No longer a massive <script> section | Moved to static\js\index.js  -->
+</body>
+</html>
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='static\css\results.css'>
+    <title>Link Hunter: Results</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/redditLogo.png') }}">
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <body class="dark-theme">
+
+    <nav class="primary-navigation">
+      <ul class="nav-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="#section-1">Download Link</a></li>
+        <li><a href="#section-2">Top Results</a></li>
+        <li><a href="#Subreddit_Recep">Graphs</a></li>
+        <li><a href="#postTable">Posts</a></li>
+      </ul>
+    </nav>
+
+    <section id="section-1">
+
+          <div class="bigText">Link Entered:</div><br><br>
+
+          <!-- Here is the Variable containing the link can be changed if need be -->
+
+            <div id="URLbox">
+              <p id="icon"><img height="100" width="100" src="{{ icon_url }}" alt="{{ icon_url }}"></p>
+              {{ link }}
+            </div>
+            <br>
+
+            <a href="{{ url_for('download', q=download_link) }}" class="btn btn-primary">Download Raw JSON data</a>
+
+          <p class="smallText">Scroll down for analysis.</p>
+
+          <p id="arrow">↓</p>
+
+
+    </section>
+
+
+    <section id="section-2">
+      <div id="wrapper-container">
+      <div id="left-container">
+        <div class="container-title">
+          <h1 class="container-title">Results</h1>
+        </div>
+
+        <div class ="column">
+          <h2>Top Posts</h2> 
+          <ul class="list">
+            {% for index in range(data['top_length']) %}
+            <li class="list-li">{{ search_data['Title'][index] }}</li><br>
+            {% endfor %}
+          </ul>
+            
+        </div>
+        <div class="column">
+          <h2>Top Subreddits</h2> 
+          <ul class="list">
+            {% for index in range(data['top_length']) %}
+            <li>{{ data['top_subreddits'][index] }}</li><br>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+        
+      <div id="right-container">
+        <div class="container-title">
+          <h1 class="container-title">Receptivity</h1>
+        </div>
+          
+        <div class ="column">
+          <ul class="list">
+            <h3>Total Upvotes</h3>
+            <li> {{data['total_upvotes']}} </li><br>
+            <h3>Total Downvotes</h3>
+            <li>{{data['total_downvotes']}}</li><br>
+          </ul>
+        </div>
+
+        <div class ="column">
+          <ul class="list">
+            <h3>Total Comments</h3>
+            <li>{{data['total_comments']}}</li><br>
+            <h3>Total Receptivity</h3>
+            <li>{{data['total_score']}}</li><br>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </section>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <!-- Only fix I could find for titles alignment issue. -->
+      
+    <section id="section-3">
+    <div id = "Graphs">
+      
+      <div class="graph_container">
+      <p class="Title" id="Subreddit_Recep">Subreddit Receptivity</p>
+      <canvas id="graph_subreddit_scores"></canvas>
+      </div>
+
+      <div class="graph_container">
+        <p class="Title" id="Post_Recep">Individual Post Receptivity</p>
+        <canvas id="graph_posts_scores"></canvas>
+      </div>
+
+      <div class="graph_container">
+        <p class="Title" id="total_pie">Total Upvotes vs Downvotes</p>
+        <canvas id="graph_scores"></canvas>
+      </div>
+
+    </div>
+
+    </section>
+
+    <script type="text/javascript">
+      var graph1_x = {{ graph_data[0]|safe }}
+      var graph1_y = {{ graph_data[1]|safe }}
+
+      var graph2_x = {{ graph_data[2]|safe }}
+      var graph2_y = {{ graph_data[3]|safe }}
+
+      var graph3_x = {{ graph_data[4]|safe }}
+      var graph3_y = {{ graph_data[5]|safe }}
+
+    </script>
+    <script src="static\js\Graphs.js" type="text/javascript"></script>
+  
+
+  <br>
+
+  <div class="posts">
+    <table class="posts" id="postTable">
+
+      <tr>
+        <th onclick="sortTable(0)">Title</th>
+        <th id="subreddit" onclick="sortTable(1)">Subreddit<span class="sort-arrow"></span></th>
+        <th id="posted" onclick="sortTable(2)">Posted<span class="sort-arrow"></span></th>
+        <th id="upvotes" onclick="sortTable(3)">Upvotes<span class="sort-arrow"></span></th>
+        <th id="downvotes" onclick="sortTable(4)">Downvotes<span class="sort-arrow"></span></th>
+        <th id="comments" onclick="sortTable(5)">Comments<span class="sort-arrow"></span></th>
+        <th id="score" onclick="sortTable(6)">Score<span class="sort-arrow"></span></th>
+      </tr>
+
+      {% for row in range(data['total_length']) %}
+      <tr class="row">
+        <td class="title">{{ search_data['Title'][row]}}</td>
+        <td class="subreddit">{{ search_data['Subreddits'][row] }}</td>
+        <td class="posted">{{ search_data['Time'][row] }}</td>
+        <td class="upvotes">{{ search_data['Upvotes'][row] }}</td>
+        <td class="downvotes">{{ search_data['Downvotes'][row] }}</td>
+        <td class="comments">{{ search_data['Total Comments'][row] }}</td>
+        <td class="comments">{{ search_data['Score'][row] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+
+  <div class="colour_container">
+    <img src="{{ url_for('static', filename='img/night-mode.png') }}" id="colour_icon">
+  </div>
+</body>
+<script src="{{ url_for('static', filename='js/results.js') }}"> </script>
+</html>

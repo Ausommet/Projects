@@ -75,14 +75,10 @@ To run the project your terminal/CLI must be opened inside the same folder as th
 
   
 
-| Operating System | Commands |
-
-|---------------------|---------------------------------|
-
-| **Windows 10 & 11** | python app.py **or** python3 app.py |
-
-| **Linux** | python3 app.py |
-
+|Operating System|Commands  |
+|--|--|
+|**Windows 10 & 11**  |python app.py **or** python3 app.py  |
+|**Linux**  |python3 app.py  |
 | **MacOS** | python3 app.py |
 
   

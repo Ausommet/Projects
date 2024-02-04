@@ -1,7 +1,7 @@
 
 #  Link Hunter By Group-17
 
-  Link Hunter, a powerful online tool to observe information spreading (i.e Links) on Reddit.
+  Link Hunter, is a powerful online tool to observe information spreading (Links) on Reddit.
 
   Key Technologies:
  - Python: The core programming language driving Link Hunter's
@@ -11,7 +11,7 @@
  - Flask: Serving as the web framework, Flask enables a seamless and   
    responsive user interface.
  - PRAW (Python Reddit API Wrapper): Leveraging PRAW to interact with   
-   Reddit's API, ensuring accurate and up-to-date information retrieval.
+   Reddit's API ensures accurate and up-to-date information retrieval.
 
   
 

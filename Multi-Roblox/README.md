@@ -1,6 +1,5 @@
 # Roblox Multi Instance
 Allows for multiple roblox instances to run at the same time.
-Can be Downloaded here
 
 ## Instructions
 1. Make sure no roblox applications are running.
